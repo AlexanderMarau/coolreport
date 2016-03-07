@@ -2,6 +2,7 @@
 using System.IO;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace coolreport
 {
@@ -16,20 +17,22 @@ namespace coolreport
         private string encoding;
         private string extension;
         private ReportType reporType;
-        private Type type;
-        public CoolReport(ReportType reporType, Type type)
+        private string reportNameWithExtension;
+        private string dataSourceName;
+        public CoolReport(ReportType reporType, string reportNameWithExtension, string dataSourceName)
         {
             this.reporType = reporType;
-            this.type = type;
+            this.reportNameWithExtension = reportNameWithExtension;
+            this.dataSourceName = dataSourceName;
         }
+    }
 
-    }
-    public enum ReportType
-    {
-        Word,PDF,Excel
-    }
-    public enum Type
-    {
-        WithParameters,WithoutParameters
-    }
+}
+
+
+public enum ReportType
+{
+    Word, PDF, Excel
+}
+   
 }
