@@ -12,7 +12,6 @@ namespace coolreport
     public class CoolReport
     {
         private ReportViewer reportViewer;
-        private List<ReportParameter> listParameter;
         private byte[] bytePDF { get; set; }
         Warning[] warnings;
         private string[] streamids;
@@ -36,25 +35,49 @@ namespace coolreport
         }
         public void OpenReportWithoutParameters(IEnumerable _query, string reportName = "Report")
         {
+            ReportDataSource list = ReportQuery(_query);
+            reportViewer.LocalReport.DataSources.Add(list);
+            CreateReport(reportName);
 
-                var list = new ReportDataSource(name: dataSourceName, dataSourceValue: _query);
-                reportViewer.LocalReport.DataSources.Add(list);
-                byte[] bytePDF = reportViewer.LocalReport.Render(extensionName = extensionName.Remove(0,1).ToUpper(), null, out mimeType, out encoding, out extension, out streamids, out warnings);
-                FileStream fileStream = null;
-                string fileName = null;
-                fileName = GeneratePath(reportName);
-                fileStream = new FileStream(fileName, FileMode.Create);
-                fileStream.Write(bytePDF, 0, bytePDF.Length);
-                fileStream.Close();
-                Process.Start(fileName);
-           
+        }        
+        public void OpenReportWithoutQuery(List<ReportParameter> listParameter, string reportName = "Report")
+        {
+            reportViewer.LocalReport.SetParameters(listParameter);
+            CreateReport(reportName);
         }
-
+        public void OpenReportWithQueryAndParameters(IEnumerable _query, List<ReportParameter> listParameter, string reportName = "Report")
+        {
+            ReportDataSource list = ReportQuery(_query);
+            reportViewer.LocalReport.DataSources.Add(list);
+            reportViewer.LocalReport.SetParameters(listParameter);
+            CreateReport(reportName);
+        }
+        private void CreateReport(string reportName)
+        {
+            byte[] bytePDF = reportViewer.LocalReport.Render(extensionName  = extensionName.Contains(".") ? extensionName.Remove(0, 1) : extensionName, null, out mimeType, out encoding, out extension, out streamids, out warnings);
+            FileStream fileStream = null;
+            string fileName = null;
+            fileName = GeneratePath(reportName);
+            fileStream = new FileStream(fileName, FileMode.Create);
+            fileStream.Write(bytePDF, 0, bytePDF.Length);
+            fileStream.Close();
+            Process.Start(fileName);
+            Disposed();
+        }
+        private ReportDataSource ReportQuery(IEnumerable _query)
+        {
+            return new ReportDataSource(name: dataSourceName, dataSourceValue: _query);
+        }
         private static string GeneratePath(string reportName)
-        {            
-            return $"{Path.GetTempPath()} {reportName} - {DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss")}.{extensionName}"; 
+        {
+            var extensionType = extensionName.Contains(ReportType.Excel.ToString()) ? ReportExtension.xls.ToString() : extensionName;
+            return $"{Path.GetTempPath()} {reportName} - {DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss")}.{extensionType}"; 
         }
       
+        private void Disposed()
+        {
+            
+        }
     }
 
 }
@@ -65,5 +88,8 @@ public enum ReportType
     Word, PDF, Excel
 }
 
-
+public enum ReportExtension
+{
+    xls
+}
 
