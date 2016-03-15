@@ -13,7 +13,6 @@ namespace coolreport
     public class CoolReport
     {
         private ReportViewer reportViewer;
-        private byte[] bytePDF { get; set; }
         Warning[] warnings;
         private string[] streamids;
         private string mimeType;
