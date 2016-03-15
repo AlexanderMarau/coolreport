@@ -6,7 +6,8 @@ using System.Collections;
 using System;
 using System.Security;
 using System.Security.Permissions;
-
+using System.Windows.Forms;
+using System.Linq;
 namespace coolreport
 {
     public class CoolReport
@@ -26,7 +27,7 @@ namespace coolreport
             reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = processingMode;
             this.dataSourceName = dataSourceName;
-            extensionName = reportType == ReportType.Excel ? ".Excel" : reportType == ReportType.Word ? ".Word" : ".pdf";        
+            extensionName = reportType == ReportType.Excel ? ".Excel" : reportType == ReportType.Word ? ".Word" : ".pdf";
             reportViewer.LocalReport.ReportPath = reportNameWithExtension;
             reportViewer.LocalReport.SetBasePermissionsForSandboxAppDomain(new PermissionSet(PermissionState.Unrestricted));
         }
@@ -69,7 +70,15 @@ namespace coolreport
             var extensionType = extensionName.Contains(ReportType.Excel.ToString()) ? ReportExtension.xls.ToString() : extensionName;
             return $"{Path.GetTempPath()} {reportName} - {DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss")}.{extensionType}";
         }
-      
+
+
+    }
+    public static class ReportPath
+    {
+        public static string GetFullPath(this string arquivoComExtensao)
+        {
+            return Directory.GetFiles(System.IO.Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)), arquivoComExtensao, SearchOption.AllDirectories).FirstOrDefault();
+        }
     }
 
 }
