@@ -20,16 +20,13 @@ namespace coolreport
         private string extension;
         private string dataSourceName;
         private static string extensionName;
-       
+
         public CoolReport(ReportType reportType, string reportNameWithExtension, string dataSourceName, ProcessingMode processingMode = ProcessingMode.Local)
         {
             reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = processingMode;
             this.dataSourceName = dataSourceName;
-            extensionName = reportType == ReportType.Excel ? ".Excel" : reportType == ReportType.Word ? ".Word" : ".pdf";
-            /*reportViewer.LocalReport.ReportEmbeddedResource ="Mike.Utilities.Desktop.teste.rdlc";  
-            se for rodar no mesmo assembly
-            */
+            extensionName = reportType == ReportType.Excel ? ".Excel" : reportType == ReportType.Word ? ".Word" : ".pdf";        
             reportViewer.LocalReport.ReportPath = reportNameWithExtension;
             reportViewer.LocalReport.SetBasePermissionsForSandboxAppDomain(new PermissionSet(PermissionState.Unrestricted));
         }
@@ -39,7 +36,7 @@ namespace coolreport
             reportViewer.LocalReport.DataSources.Add(list);
             CreateReport(reportName);
 
-        }        
+        }
         public void OpenReportWithoutQuery(List<ReportParameter> listParameter, string reportName = "Report")
         {
             reportViewer.LocalReport.SetParameters(listParameter);
@@ -54,7 +51,7 @@ namespace coolreport
         }
         private void CreateReport(string reportName)
         {
-            byte[] bytePDF = reportViewer.LocalReport.Render(extensionName  = extensionName.Contains(".") ? extensionName.Remove(0, 1) : extensionName, null, out mimeType, out encoding, out extension, out streamids, out warnings);
+            byte[] bytePDF = reportViewer.LocalReport.Render(extensionName = extensionName.Contains(".") ? extensionName.Remove(0, 1) : extensionName, null, out mimeType, out encoding, out extension, out streamids, out warnings);
             FileStream fileStream = null;
             string fileName = null;
             fileName = GeneratePath(reportName);
@@ -62,7 +59,6 @@ namespace coolreport
             fileStream.Write(bytePDF, 0, bytePDF.Length);
             fileStream.Close();
             Process.Start(fileName);
-            Disposed();
         }
         private ReportDataSource ReportQuery(IEnumerable _query)
         {
@@ -71,13 +67,9 @@ namespace coolreport
         private static string GeneratePath(string reportName)
         {
             var extensionType = extensionName.Contains(ReportType.Excel.ToString()) ? ReportExtension.xls.ToString() : extensionName;
-            return $"{Path.GetTempPath()} {reportName} - {DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss")}.{extensionType}"; 
+            return $"{Path.GetTempPath()} {reportName} - {DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss")}.{extensionType}";
         }
       
-        private void Disposed()
-        {
-            
-        }
     }
 
 }
@@ -88,7 +80,7 @@ public enum ReportType
     Word, PDF, Excel
 }
 
-public enum ReportExtension
+internal enum ReportExtension
 {
     xls
 }
