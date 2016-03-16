@@ -61,9 +61,7 @@ namespace coolreport
             Process.Start(fileName);
         }
         private ReportDataSource ReportQuery(IEnumerable _query)
-        {
-            return new ReportDataSource(name: dataSourceName, dataSourceValue: _query);
-        }
+                => new ReportDataSource(name: dataSourceName, dataSourceValue: _query);
         private static string GeneratePath(string reportName)
         {
             var extensionType = extensionName.Contains(ReportType.Excel.ToString()) ? ReportExtension.xls.ToString() : extensionName;
@@ -75,9 +73,12 @@ namespace coolreport
     public static class ReportPath
     {
         public static string GetFullPath(this string arquivoComExtensao)
-        {
-            return Directory.GetFiles(System.IO.Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)), arquivoComExtensao, SearchOption.AllDirectories).FirstOrDefault();
-        }
+               => Directory.GetFiles
+                  (
+                       Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)),
+                       arquivoComExtensao, 
+                       SearchOption.AllDirectories
+                  ).FirstOrDefault();
     }
 
 }
