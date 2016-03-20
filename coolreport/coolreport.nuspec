@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>coolreport</id>
+    <version>1.1.0</version>
+    <title>coolreport</title>
+    <authors>Mike Rodrigues De Lima</authors>
+    <owners>Mike Rodrigues De Lima</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package is a util to generate a report of a manner easy</description>
+    <releaseNotes>create report in the format pdf, excel and word.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>coolreport</tags>
+    <dependencies>
+      <dependency id="EntityFramework" version="6.1.3" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\*.dll" target="lib" />
+  </files>
+</package>
