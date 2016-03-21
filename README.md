@@ -19,11 +19,11 @@ In your Package Manager Console type ![alt tag](http://i68.tinypic.com/amuudj.pn
 ![alt tag](http://i67.tinypic.com/2nhkrrn.png)
 3 - Choose your entity that you want to use with report, in my case I'm use a entity produto
 
-![alt tag](http://i68.tinypic.com/2s61r85.png)
+![alt tag](http://i68.tinypic.com/20izxqu.jpg)
 
 3 - Choose the name of the dataset and remember that you will use later
 
-![alt tag](http://i66.tinypic.com/2nlco42.png)
+![alt tag](http://i68.tinypic.com/2s61r85.png)
 
 4 - How to use in code
 
