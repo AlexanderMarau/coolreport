@@ -23,7 +23,7 @@ In your Package Manager Console type ![alt tag](http://i68.tinypic.com/amuudj.pn
 
 3 - Choose the name of the dataset and remember that you will use later
 
-![alt tag](http://i68.tinypic.com/20izxqu.png)
+![alt tag](http://i66.tinypic.com/2nlco42.png)
 
 4 - How to use in code
 
