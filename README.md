@@ -27,6 +27,6 @@ In your Package Manager Console type ![alt tag](http://i68.tinypic.com/amuudj.pn
 
 4 - How to use in code
 
-![alt tag](http://i63.tinypic.com/xcsxi1.png)
+![alt tag](http://i63.tinypic.com/xcsxi1.png) <br>
 always use the GetFullPath with the report name plus the extension, example "myreport.rdlc" .GetFullPath ();
 
