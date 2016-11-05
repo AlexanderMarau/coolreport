@@ -1,4 +1,4 @@
-# Generate report became very simple. 
+# CoolReport - Generate report became very simple. 
 
 ### How to install
 
