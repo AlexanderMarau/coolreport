@@ -1,33 +1,37 @@
 # How to install
 
-In your Package Manager Console type ![alt tag](http://i68.tinypic.com/amuudj.png)
+##### In your Package Manager Console type
+```
+Install-Package coolreport
+```
 
 # How to use 
 
-1 - create a report with format .rdlc. <br>  
-1.1 - always use the GetFullPath with the report name plus the extension, example "myreport.rdlc" .GetFullPath ();
+##### 1 - create a report with format .rdlc.
 
-![alt tag](http://i68.tinypic.com/swec1e.png)
+##### 1.1 - always use the GetFullPath with the report name plus the extension, example "myreport.rdlc" .GetFullPath ();
 
+[![1.png](https://s17.postimg.org/wq6pjcqb3/image.png)](https://postimg.org/image/g2f7guvjf/)
 
-2 - Add all that you need, in this case I'll use a table and texbox
+##### 2 - Add all that you need, in this case I'll use a table and texbox
 
-![alt tag](http://i64.tinypic.com/5ydoo9.png)
+[![2.png](https://s17.postimg.org/em3oypsmn/image.png)](https://postimg.org/image/h3fg5zciz/)
 
-3 - Then select the object and click on the next button 
+##### 3 - Then select the object and click on the next button 
 
-![alt tag](http://i67.tinypic.com/2nhkrrn.png)<br>
+[![3.png](https://s17.postimg.org/mdkex9wrz/image.png)](https://postimg.org/image/5d1ioljqj/)
 
-4 - Choose your entity that you want to use with report, in my case I'm use a entity produto
+##### 4 - Choose your entity that you want to use with report, in my case I'm use a entity produto
 
-![alt tag](http://i68.tinypic.com/20izxqu.jpg)
+[![4.png](https://s17.postimg.org/dh9mtc65r/image.png)](https://postimg.org/image/dh9mtc65n/)
 
-5 - Choose the name of the dataset and remember that you will use later
+##### 5 - Choose the name of the dataset and remember that you will use later
 
-![alt tag](http://i68.tinypic.com/2s61r85.png)
+[![5.png](https://s17.postimg.org/6pemcqrsf/image.png)](https://postimg.org/image/hc8fi5zxn/)
 
-6 - How to use in code
+##### 6 - How to use in code
 
-![alt tag](http://i63.tinypic.com/xcsxi1.png) <br>
+[![6.png](https://s17.postimg.org/5lui0s75b/image.png)](https://postimg.org/image/5lui0s757/)
+
 always use the GetFullPath with the report name plus the extension, example "myreport.rdlc" .GetFullPath ();
 
