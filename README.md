@@ -1,11 +1,13 @@
-# How to install
+# Generate report became very simple. 
+
+### How to install
 
 ##### In your Package Manager Console type
 ```
 Install-Package coolreport
 ```
 
-# How to use 
+### How to use 
 
 ##### 1 - create a report with format .rdlc.
 
