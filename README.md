@@ -36,4 +36,8 @@ Install-Package coolreport
 [![6.png](https://s17.postimg.org/5lui0s75b/image.png)](https://postimg.org/image/5lui0s757/)
 
 ##### always use the GetFullPath with the report name plus the extension, example "myreport.rdlc" .GetFullPath ();
+<hr>
+### License
 
+It is available under the MIT license.
+[License](https://opensource.org/licenses/mit-license.php)
