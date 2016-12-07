@@ -7,7 +7,7 @@
 Install-Package coolreport
 ```
 
-### How to use 
+### How to use
 
 ##### 1 - create a report with format .rdlc.
 
